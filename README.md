@@ -37,5 +37,5 @@ npm install -D nodemon prettier
     - handlers
     - init
     - protobuf
-    - sessions
+    - session
     - utils
