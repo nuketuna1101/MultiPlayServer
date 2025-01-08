@@ -4,9 +4,10 @@
 // 서버의 메인 진입점
 //====================================================================================================================
 //====================================================================================================================import net from 'net';
-import { onConnection } from './events/onConnection';
-import initServer from './init';
-import { config } from 'dotenv';
+import net from 'net';
+import initServer from './init/index.js';
+import { onConnection } from './events/onConnection.js';
+import { config } from './config/config.js';
 
 const server = net.createServer(onConnection);
 

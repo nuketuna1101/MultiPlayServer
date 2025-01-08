@@ -1,18 +1,18 @@
 //====================================================================================================================
 //====================================================================================================================
-// onConnection.js
-// 서버 연결
+// constants/header.js
+// 패킷 헤더 정보 관련
 //====================================================================================================================
 //====================================================================================================================
-// import { onEnd } from './onEnd.js';
-// import { onError } from './onError.js';
-// import { onData } from './onData.js';
 
-export const onConnection = (socket) => {
-    console.log('Client on Connected : ', socket.remoteAddress, socket.remotePort);
+// 전체 길이
+export const TOTAL_LENGTH = 4;
 
-    // 각 client가 buffer 고유하게 유지하도록 할당
-    socket.buffer = Buffer.alloc(0);
+// 패킷타입 1byte로 표시
+export const PACKET_TYPE_LENGTH = 1;
 
-
-}
+// 패킷타입 열거형
+export const PACKET_TYPE = {
+    PING: 0,
+    NORMAL: 1,
+};
