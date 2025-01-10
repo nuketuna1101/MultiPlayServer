@@ -5,16 +5,16 @@
 //====================================================================================================================
 //====================================================================================================================
 
+import pools from '../db/database.js';
+import { testAllConnections } from '../utils/db/testConnection.js';
 import { loadGameAssets } from './assets.js';
-// import { loadProtos } from './loadProtos.js';
-// import { testAllConnections } from '../utils/db/testConnection.js';
-// import pools from '../db/database.js';
+import { loadProtos } from './loadProtos.js';
 
 const initServer = async () => {
     try {
         await loadGameAssets();
-        // await loadProtos();
-        // await testAllConnections(pools);
+        await loadProtos();
+        await testAllConnections(pools);
         // 다음 작업
     } catch (e) {
         console.error(e);
