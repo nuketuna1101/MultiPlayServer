@@ -1,3 +1,9 @@
+//====================================================================================================================
+// handlers/user/initial.handler.js.
+// 유저 초기화 핸들러 이벤트
+//====================================================================================================================
+//====================================================================================================================
+
 import { addUser } from '../../session/user.session.js';
 import { HANDLER_IDS, RESPONSE_SUCCESS_CODE } from '../../constants/handlerIds.js';
 import { createResponse } from '../../utils/response/createResponse.js';
@@ -7,15 +13,18 @@ import { createUser, findUserByDeviceID, updateUserLogin } from '../../db/user/u
 const initialHandler = async ({ socket, userId, payload }) => {
   try {
     const { deviceId } = payload;
-
+    console.log("test");
+    // device Id로 유저 찾기
     let user = await findUserByDeviceID(deviceId);
 
+    // deviceId 기준으로, 찾은 유저로 로그인하거나, 최초 접속 시 유저 생성
     if (!user) {
       user = await createUser(deviceId);
     } else {
       await updateUserLogin(user.id);
     }
 
+    // 세션에 유저 추가
     addUser(user.id, socket);
 
     // 유저 정보 응답 생성

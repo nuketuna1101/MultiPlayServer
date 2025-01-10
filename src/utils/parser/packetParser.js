@@ -1,3 +1,11 @@
+//====================================================================================================================
+//====================================================================================================================
+// utils/parser/packetParser.js
+// 설정값 및 환경변수
+//====================================================================================================================
+//====================================================================================================================
+
+
 import { getProtoMessages } from '../../init/loadProtos.js';
 import { getProtoTypeNameByHandlerId } from '../../handlers/index.js';
 import { config } from '../../config/config.js';
@@ -11,6 +19,7 @@ export const packetParser = (data) => {
     const Packet = protoMessages.common.Packet;
     let packet;
 
+    // 패킷 디코딩
     try {
         packet = Packet.decode(data);
     } catch (error) {

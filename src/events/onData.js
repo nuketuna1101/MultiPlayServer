@@ -3,6 +3,7 @@
 // events/onData.js.
 //====================================================================================================================
 //====================================================================================================================
+
 import { config } from '../config/config.js';
 import { PACKET_TYPE } from '../constants/header.js';
 import { packetParser } from '../utils/parser/packetParser.js';
@@ -46,7 +47,9 @@ export const onData = (socket) => async (data) => {
                             user.handlePong(pingMessage);
                         }
                         break;
+                    // 패킷타입 노말에 대해
                     case PACKET_TYPE.NORMAL:
+                        // 패킷 파싱
                         const { handlerId, sequence, payload, userId } = packetParser(packet);
 
                         const user = getUserById(userId);
