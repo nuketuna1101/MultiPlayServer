@@ -11,6 +11,7 @@ import { getProtoTypeNameByHandlerId } from '../../handlers/index.js';
 import { config } from '../../config/config.js';
 import CustomError from '../error/customError.js';
 import { ErrorCodes } from '../error/errorCodes.js';
+import { testLog } from '../testLogger.js';
 
 export const packetParser = (data) => {
     const protoMessages = getProtoMessages();
@@ -20,6 +21,12 @@ export const packetParser = (data) => {
     let packet;
 
     // 패킷 디코딩
+    // 디코딩에서 오류 나니 테스트로그
+    testLog(0, `[packetParser] data : ${data}`);
+    testLog(0, `[packetParser] typeof data : ${typeof data}`);
+    testLog(0, `[packetParser] data.constructor : ${data.constructor.name}`);
+    testLog(0, `[packetParser] raw data (hex): ${data.toString('hex')}`);
+
     try {
         packet = Packet.decode(data);
     } catch (error) {

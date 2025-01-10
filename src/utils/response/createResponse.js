@@ -2,8 +2,10 @@ import { getProtoMessages } from '../../init/loadProtos.js';
 import { getNextSequence } from '../../session/user.session.js';
 import { config } from '../../config/config.js';
 import { PACKET_TYPE } from '../../constants/header.js';
+import { testLog } from '../testLogger.js';
 
 export const createResponse = (handlerId, responseCode, data = null, userId) => {
+  testLog(0, `[createResponse] 응답 생성`);
   const protoMessages = getProtoMessages();
   const Response = protoMessages.response.Response;
 

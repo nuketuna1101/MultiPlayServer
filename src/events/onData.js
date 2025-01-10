@@ -13,8 +13,13 @@ import { handleError } from '../utils/error/errorHandler.js';
 import CustomError from '../utils/error/customError.js';
 import { ErrorCodes } from '../utils/error/errorCodes.js';
 import { getProtoMessages } from '../init/loadProtos.js';
+import { testLog } from '../utils/testLogger.js';
 
 export const onData = (socket) => async (data) => {
+    //
+    testLog(0, `[onData] received data`);
+    // testLog(`[onData] socket: ${socket} , data: ${data}`);
+
     // 버퍼에 새로 수신 데이터 추가
     socket.buffer = Buffer.concat([socket.buffer, data]);
 
@@ -49,6 +54,7 @@ export const onData = (socket) => async (data) => {
                         break;
                     // 패킷타입 노말에 대해
                     case PACKET_TYPE.NORMAL:
+                        testLog(0, `[onData] packetType: NORMAL`);
                         // 패킷 파싱
                         const { handlerId, sequence, payload, userId } = packetParser(packet);
 
