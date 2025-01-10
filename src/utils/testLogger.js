@@ -8,8 +8,8 @@
 // 테스트 로그 보일지 말지 결정할 플래그 부울
 const flag = true;
 
-export const testLog = (index = 0, msg) => {
-    if (!flag) return;
+export const testLog = (index = 0, msg, manualFlag = true) => {
+    if (!flag || !manualFlag) return;
     const logMsg = "[TestLogger]: " + msg;
     switch (index) {
         case 0:
