@@ -6,9 +6,11 @@ import { HANDLER_IDS, RESPONSE_SUCCESS_CODE } from '../../constants/handlerIds.j
 import { getUserById } from '../../session/user.session.js';
 import CustomError from '../../utils/error/customError.js';
 import { ErrorCodes } from '../../utils/error/errorCodes.js';
+import { testLog } from '../../utils/testLogger.js';
 
 const createGameHandler = ({ socket, userId, payload }) => {
   try {
+    testLog(0, `[createGameHandler] called`);
     const gameId = uuidv4();
     const gameSession = addGameSession(gameId);
 

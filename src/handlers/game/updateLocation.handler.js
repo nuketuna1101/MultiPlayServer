@@ -2,9 +2,11 @@ import { getGameSession } from '../../session/game.session.js';
 import { handleError } from '../../utils/error/errorHandler.js';
 import CustomError from '../../utils/error/customError.js';
 import { ErrorCodes } from '../../utils/error/errorCodes.js';
+import { testLog } from '../../utils/testLogger.js';
 
 const updateLocationHandler = ({ socket, userId, payload }) => {
   try {
+    testLog(0, `[updateLocationHandler] called`);
     const { gameId, x, y } = payload;
     const gameSession = getGameSession(gameId);
 

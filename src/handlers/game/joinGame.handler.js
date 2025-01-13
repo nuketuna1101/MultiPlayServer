@@ -5,9 +5,11 @@ import { HANDLER_IDS, RESPONSE_SUCCESS_CODE } from '../../constants/handlerIds.j
 import { getUserById } from '../../session/user.session.js';
 import CustomError from '../../utils/error/customError.js';
 import { ErrorCodes } from '../../utils/error/errorCodes.js';
+import { testLog } from '../../utils/testLogger.js';
 
 const joinGameHandler = ({ socket, userId, payload }) => {
   try {
+    testLog(0, `[joinGameHandler] called`);
     const { gameId } = payload;
     const gameSession = getGameSession(gameId);
 

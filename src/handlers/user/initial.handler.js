@@ -9,11 +9,12 @@ import { HANDLER_IDS, RESPONSE_SUCCESS_CODE } from '../../constants/handlerIds.j
 import { createResponse } from '../../utils/response/createResponse.js';
 import { handleError } from '../../utils/error/errorHandler.js';
 import { createUser, findUserByDeviceID, updateUserLogin } from '../../db/user/user.db.js';
+import { testLog } from '../../utils/testLogger.js';
 
 const initialHandler = async ({ socket, userId, payload }) => {
   try {
+    testLog(0, `[initialHandler] called`);
     const { deviceId } = payload;
-    console.log("test");
     // device Id로 유저 찾기
     let user = await findUserByDeviceID(deviceId);
 
