@@ -1,4 +1,5 @@
 import { createPingPacket } from '../../utils/notification/game.notification.js';
+import { testLog } from '../../utils/testLogger.js';
 
 class User {
   constructor(id, socket) {
@@ -30,6 +31,7 @@ class User {
   handlePong(data) {
     const now = Date.now();
     this.latency = (now - data.timestamp) / 2;
+    testLog(0, `Received pong from user ${this.id} at ${now} with latency ${this.latency}ms`);
     // console.log(`Received pong from user ${this.id} at ${now} with latency ${this.latency}ms`);
   }
 
