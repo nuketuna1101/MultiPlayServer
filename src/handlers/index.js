@@ -5,6 +5,7 @@ import { ErrorCodes } from '../utils/error/errorCodes.js';
 import createGameHandler from './game/createGame.handler.js';
 import joinGameHandler from './game/joinGame.handler.js';
 import updateLocationHandler from './game/updateLocation.handler.js';
+import { testLog } from '../utils/testLogger.js';
 
 const handlers = {
   [HANDLER_IDS.INITIAL]: {
@@ -30,7 +31,7 @@ export const getHandlerById = (handlerId) => {
   if (!handlers[handlerId]) {
     throw new CustomError(
       ErrorCodes.UNKNOWN_HANDLER_ID,
-      `[Error] Cannot find handler: ID ${handlerId}`,
+      `[Error/getHandlerById] Cannot find handler: ID ${handlerId}`,
     );
   }
   return handlers[handlerId].handler;
@@ -41,7 +42,7 @@ export const getProtoTypeNameByHandlerId = (handlerId) => {
     // packetParser 체크하고 있지만 그냥 추가합니다.
     throw new CustomError(
       ErrorCodes.UNKNOWN_HANDLER_ID,
-      `핸들러를 찾을 수 없습니다: ID ${handlerId}`,
+      `[Error/getProtoTypeNameByHandlerId] Cannot find handler: ID ${handlerId}`,
     );
   }
   return handlers[handlerId].protoType;

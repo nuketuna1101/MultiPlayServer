@@ -18,6 +18,7 @@ const updateLocationHandler = ({ socket, userId, payload }) => {
     if (!user) {
       throw new CustomError(ErrorCodes.USER_NOT_FOUND, '유저를 찾을 수 없습니다.');
     }
+    // 유저 위치 업데이트
     user.updatePosition(x, y);
     const packet = gameSession.getAllLocation();
 

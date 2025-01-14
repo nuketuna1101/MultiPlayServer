@@ -24,7 +24,7 @@ export const packetParser = (data) => {
         testLog(0, `[packetParser] raw data (hex): ${data.toString('hex')}`, false);
         packet = Packet.decode(data);
     } catch (error) {
-        throw new CustomError(ErrorCodes.PACKET_DECODE_ERROR, '패킷 디코딩 중 오류가 발생했습니다.');
+        throw new CustomError(ErrorCodes.PACKET_DECODE_ERROR, '[Error] failed to decode packet');
     }
 
     // 디코디된 패킷에서 각 속성 할당
@@ -44,7 +44,7 @@ export const packetParser = (data) => {
 
     // handlerId에 따라 payload 디코딩
     const protoTypeName = getProtoTypeNameByHandlerId(handlerId);
-    if (!protoTypeName) 
+    if (!protoTypeName)
         throw new CustomError(ErrorCodes.UNKNOWN_HANDLER_ID, `Unknown handler ID: ${handlerId}`);
 
     // 
@@ -52,8 +52,11 @@ export const packetParser = (data) => {
     const PayloadType = protoMessages[namespace][typeName];
     let payload;
 
+
     try {
         payload = PayloadType.decode(packet.payload);
+        testLog(0, `[packetParser] packet.payload: ${packet.payload}`);
+        testLog(0, `[packetParser] payload: ${JSON.stringify(payload, null, 2)}`);
     } catch (error) {
         throw new CustomError(ErrorCodes.PACKET_STRUCTURE_MISMATCH, '패킷 구조가 일치하지 않습니다.');
     }
