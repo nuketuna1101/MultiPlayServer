@@ -11,9 +11,11 @@ import { testLog } from '../../utils/testLogger.js';
 const createGameHandler = ({ socket, userId, payload }) => {
   try {
     testLog(0, `[createGameHandler] called`);
+    testLog(0, `[createGameHandler] userId : ${userId}`);
     const gameId = uuidv4();
     const gameSession = addGameSession(gameId);
 
+    
     const user = getUserById(userId);
     if (!user) {
       throw new CustomError(ErrorCodes.USER_NOT_FOUND, '유저를 찾을 수 없습니다.');
