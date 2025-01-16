@@ -8,8 +8,10 @@
 import { userSessions } from './sessions.js';
 import User from '../classes/models/user.class.js';
 
-export const addUser = (id, socket) => {
+export const addUser = (id, socket, deviceId, playerId) => {
   const user = new User(id, socket);
+  user.setDeviceId(deviceId);
+  user.setPlayerId(playerId);
   userSessions.push(user);
   return user;
 };

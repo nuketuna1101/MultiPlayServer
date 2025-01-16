@@ -62,12 +62,17 @@ class Game {
 
   getAllLocation() {
     const maxLatency = this.getMaxLatency();
-
-    const locationData = this.users.map((user) => {
+    // 클라이언트에서의 DTO 구조와 명명 통일
+    const userLocation = this.users.map((user) => {
       const { x, y } = user.calculatePosition(maxLatency);
-      return { id: user.id, x, y };
+      return { 
+        id: user.id, 
+        playerId: user.playerId,
+        x, 
+        y 
+      };
     });
-    return createLocationPacket(locationData);
+    return createLocationPacket(userLocation);
   }
 }
 

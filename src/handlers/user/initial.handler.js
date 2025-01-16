@@ -26,7 +26,7 @@ const initialHandler = async ({ socket, userId, payload }) => {
     }
 
     // 세션에 유저 추가
-    addUser(user.id, socket);
+    addUser(user.id, socket, deviceId, playerId);
 
     // 유저 정보 응답 생성
     const initialResponse = createResponse(

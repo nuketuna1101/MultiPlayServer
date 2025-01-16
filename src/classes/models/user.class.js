@@ -48,6 +48,33 @@ class User {
       y: this.y,
     };
   }
+
+  //#region 여러가지 id 관련 getter, setter
+  setPlayerId(playerId){
+    this.playerId = playerId;
+  }
+
+  setDeviceId(deviceId){
+    this.deviceId = deviceId;
+  }
+
+  setLatency(latency){
+    this.latency = latency;
+  }
+
+  getPlayerId(){
+    return this.playerId;
+  }
+
+  getDeviceId(){
+    return this.deviceId;
+  }
+
+  getLatency(){
+    return this.latency;
+  }
+  //#endregion
+
 }
 
 export default User;
