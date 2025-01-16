@@ -18,7 +18,7 @@ npm install -D nodemon prettier
 
 <br>
 
-## File Dierctory
+## File Directory
 
 - assets
 - clients
@@ -39,3 +39,7 @@ npm install -D nodemon prettier
     - protobuf
     - session
     - utils
+
+
+<br>
+
