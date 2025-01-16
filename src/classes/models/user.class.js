@@ -72,6 +72,10 @@ class User {
     this.latency = latency;
   }
 
+  setGameId(gameId){
+    this.gameId = gameId;
+  }
+
   getPlayerId(){
     return this.playerId;
   }
@@ -82,6 +86,10 @@ class User {
 
   getLatency(){
     return this.latency;
+  }
+
+  getGameId(){
+    return this.gameId;
   }
   //#endregion
 

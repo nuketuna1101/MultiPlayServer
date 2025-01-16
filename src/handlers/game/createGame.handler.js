@@ -18,6 +18,7 @@ const createGameHandler = ({ socket, userId, payload }) => {
     testLog(0, `[createGameHandler] userId : ${userId} / gameId : ${gameId}`);
 
     const user = getUserById(userId);
+    user.setGameId(gameId);
     if (!user) {
       throw new CustomError(ErrorCodes.USER_NOT_FOUND, '[Error] cannot find user.');
     }

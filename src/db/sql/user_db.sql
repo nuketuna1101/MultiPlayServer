@@ -13,5 +13,7 @@ CREATE TABLE IF NOT EXISTS game_end
     start_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     end_time   TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     score      INT       DEFAULT 0,
+    x          FLOAT     DEFAULT 0,
+    y          FLOAT     DEFAULT 0,
     FOREIGN KEY (user_id) REFERENCES user (id)
 );
