@@ -11,14 +11,15 @@ import { testLog } from '../../utils/testLogger.js';
 const createGameHandler = ({ socket, userId, payload }) => {
   try {
     testLog(0, `[createGameHandler] called`);
-    testLog(0, `[createGameHandler] userId : ${userId}`);
+
+    // 현재 로그에 userId 를 출력하면 deviceId가 나오는 현상
     const gameId = uuidv4();
     const gameSession = addGameSession(gameId);
+    testLog(0, `[createGameHandler] userId : ${userId} / gameId : ${gameId}`);
 
-    
     const user = getUserById(userId);
     if (!user) {
-      throw new CustomError(ErrorCodes.USER_NOT_FOUND, '유저를 찾을 수 없습니다.');
+      throw new CustomError(ErrorCodes.USER_NOT_FOUND, '[Error] cannot find user.');
     }
     gameSession.addUser(user);
 
